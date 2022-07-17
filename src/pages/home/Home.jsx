@@ -10,12 +10,12 @@ const Home = () => {
 console.log(movieData)
   return (
     <Fragment>
-      <Container>
         <section className={styles.wrapper} >
+      <Container>
           <SearchForm/>
-          <MovieCard/>
-        </section>
+          <MovieCard movieData={movieData} />
       </Container>
+        </section>
     </Fragment>
   )
 }

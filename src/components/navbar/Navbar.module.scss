@@ -22,6 +22,24 @@
         
     
     }
+
+    ul{
+        list-style-type: none;
+        display: flex;
+        gap:1rem;
+    
+    }
+    li{
+        transform: scale(0.9);
+        transition: all ease-in 0.4s;
+        opacity: 0.8;
+        &:hover{
+            transform: scale(1);
+            opacity: 1;
+           
+        }
+    }
+
 }
 .logo{
     display: flex;
@@ -37,22 +55,7 @@
     
 }
 
-ul{
-    list-style-type: none;
-    display: flex;
-    gap:1rem;
 
-}
-li{
-    transform: scale(0.9);
-    transition: all ease-in 0.4s;
-    opacity: 0.8;
-    &:hover{
-        transform: scale(1);
-        opacity: 1;
-       
-    }
-}
 .link{
     color:$colorWhite;
     text-decoration: none;
