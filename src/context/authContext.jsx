@@ -4,6 +4,8 @@ import {createContext,useContext, useEffect, useState,useCallback} from "react";
 export const  AuthContext=createContext({
   movieData:"",
   setQuery:()=>{},
+  setToggleSign:()=>{},
+  toggleSign:null,
 
 });
 
@@ -20,7 +22,9 @@ const url=`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 
 const AuthContextProvider=(props)=>{
     const [movieData,setMovieData]=useState("");
-    const [query, setQuery]=useState("")
+    const [query, setQuery]=useState("");
+    const [toggleSign,setToggleSign]=useState(false);
+    console.log(toggleSign)
     
 const fetchData=async()=>{
  try {
@@ -50,7 +54,7 @@ const searchMovie=useCallback(async()=>{
         setMovieData(data)
     }
     } catch (error) {
-        console.log("error")
+        console.log(error)
         
     }
 },[query])
@@ -58,7 +62,9 @@ const searchMovie=useCallback(async()=>{
 useEffect(()=>{searchMovie()},[searchMovie])
 const contextValue={
 movieData:movieData,
-setQuery:setQuery
+setQuery:setQuery,
+toggleSign:toggleSign,
+setToggleSign:setToggleSign
 }
 
     return (<AuthContext.Provider value={contextValue}>
