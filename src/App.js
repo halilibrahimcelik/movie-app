@@ -1,8 +1,13 @@
 import { Fragment } from "react";
-import "./sass";
+import AppRouter from "./router/AppRouter";
+import "./sass/App.scss";
 
 function App() {
-  return <Fragment></Fragment>;
+  return (
+    <Fragment>
+      <AppRouter />
+    </Fragment>
+  );
 }
 
 export default App;

@@ -1,0 +1,47 @@
+@import "../../sass/variable";
+
+
+.navBar{
+
+    background-color: $colorDarkBlue;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding:1.5rem;
+    
+    h1{
+        color:$colorWhite;
+    }
+
+    nav{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        
+    
+    }
+}
+.logo{
+    display: flex;
+    gap:0.5rem;
+    align-items: center;
+
+}
+.icon{
+    color:$colorWhite;
+    font-size: 3rem;
+    
+}
+
+ul{
+    list-style-type: none;
+    display: flex;
+    gap:1rem;
+
+}
+.link{
+    color:$colorWhite;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
