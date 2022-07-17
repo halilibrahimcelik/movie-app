@@ -1,8 +1,8 @@
 import { Fragment } from "react";
-import "./App.css";
+import "./sass";
 
 function App() {
-  return <Fragment className="App"></Fragment>;
+  return <Fragment></Fragment>;
 }
 
 export default App;
