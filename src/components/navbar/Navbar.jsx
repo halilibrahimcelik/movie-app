@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./Navbar.module.scss";
 import {BiMoviePlay} from "react-icons/bi"
 import Container from '../../UI/Container';
-import {Link} from "react-router-dom";
+import {Link,NavLink} from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -15,10 +15,23 @@ const Navbar = () => {
                 </div>
                 <ul>
                     <li>
-                        <Link to="/login" className={styles.link} >Login</Link>
+                        
+                            <NavLink 
+                            to="/login"
+                            //  className={styles.link}  
+                             className={({ isActive }) =>
+    isActive ?` ${styles.active} `: `${styles.link}`
+  }
+                            >Login</NavLink>
+                      
                     </li>
                     <li>
-                    <Link to="/register"  className={styles.link} >Register</Link>
+               
+                        <NavLink to="/register"  
+                                                 className={({ isActive }) =>
+                                                 isActive ?` ${styles.active} `: `${styles.link}`} >
+                                                    Register</NavLink>
+                 
                     </li>
                 
                 </ul>
