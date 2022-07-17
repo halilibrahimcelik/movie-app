@@ -1,0 +1,30 @@
+@import "../../sass/variable";
+
+.wrapper{
+    background-color: $colorBg;
+    min-height: calc(100vh - 6rem);
+    padding:1rem;
+}
+.logo{
+    width: 250px;
+    margin: 0 auto;
+}
+.gridBox{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+min-height: calc(90vh - 6rem);
+
+}
+
+
+@media screen and (max-width:700px) {
+    
+    .gridBox{
+        display:flex;
+        flex-wrap: wrap;
+    }
+}
