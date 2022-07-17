@@ -6,6 +6,12 @@ export const  AuthContext=createContext({
   setQuery:()=>{},
   setToggleSign:()=>{},
   toggleSign:null,
+  userName:"",
+  setUserName:()=>{},
+  token:"",
+  login:(token)=>{},
+  logout:()=>{},
+  isLoggedIn:false
 
 });
 
@@ -17,15 +23,16 @@ export  const  useAuthContext=()=>{
 
 const API_KEY=process.env.REACT_APP_APP_KEY;
 const url=`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
-
-
+console.log(API_KEY)
 
 const AuthContextProvider=(props)=>{
     const [movieData,setMovieData]=useState("");
     const [query, setQuery]=useState("");
     const [toggleSign,setToggleSign]=useState(false);
-    console.log(toggleSign)
-    
+    const [userName,setUserName]=useState("");
+    const [token,setToken]=useState(null);
+ 
+    const userIsLoggedIn=!!token
 const fetchData=async()=>{
  try {
   
@@ -40,6 +47,14 @@ const fetchData=async()=>{
  } catch (error) {
     console.log(error)
  }
+}
+
+const loginHandler=(tokenId)=>{
+setToken(tokenId)
+}
+
+const logoutHandler=()=>{
+    setToken(null);
 }
 
 useEffect(()=>{fetchData()},[]);
@@ -64,7 +79,13 @@ const contextValue={
 movieData:movieData,
 setQuery:setQuery,
 toggleSign:toggleSign,
-setToggleSign:setToggleSign
+setToggleSign:setToggleSign,
+userName:userName,
+setUserName:setUserName,
+token:token,
+login:loginHandler,
+logout:logoutHandler,
+isLoggedIn:userIsLoggedIn
 }
 
     return (<AuthContext.Provider value={contextValue}>
