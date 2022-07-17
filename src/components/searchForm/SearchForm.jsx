@@ -1,16 +1,16 @@
-import React from 'react'
-
+import React, { Fragment } from 'react'
+import  styles from "./SearchForm.module.scss";
 const SearchForm = () => {
   return (
-    <div>
-        <form>
+    <Fragment>
+        <form className={styles.form} >
     <input type="text" />
     <button type='search'>Search</button>
 
         </form>
 
 
-    </div>
+    </Fragment>
   )
 }
 
