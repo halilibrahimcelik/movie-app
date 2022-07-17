@@ -9,10 +9,13 @@ const Navbar = () => {
     <section className={styles.navBar} >
         <Container>
             <nav>
-                <div className={styles.logo} >
+
+                <Link to="/"  className={styles.logo}>
+                
                     <BiMoviePlay className={styles.icon} />
                     <h1> MOVIE STORE </h1>
-                </div>
+               
+                </Link>
                 <ul>
                     <li>
                         

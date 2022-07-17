@@ -4,10 +4,10 @@
 .navBar{
 
     background-color: $colorDarkBlue;
-    display: flex;
-    justify-content: center;
+
     width: 100%;
-    padding:1.5rem;
+
+    padding: 1.5rem ;
     
     h1{
         color:$colorWhite;
@@ -17,7 +17,8 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0 1rem;
+     
+
         
     
     }
@@ -26,6 +27,8 @@
     display: flex;
     gap:0.5rem;
     align-items: center;
+    cursor: pointer;
+    text-decoration: none;
 
 }
 .icon{
@@ -39,6 +42,16 @@ ul{
     display: flex;
     gap:1rem;
 
+}
+li{
+    transform: scale(0.9);
+    transition: all ease-in 0.4s;
+    opacity: 0.8;
+    &:hover{
+        transform: scale(1);
+        opacity: 1;
+       
+    }
 }
 .link{
     color:$colorWhite;
