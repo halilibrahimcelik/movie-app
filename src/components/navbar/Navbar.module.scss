@@ -26,13 +26,17 @@
     ul{
         list-style-type: none;
         display: flex;
+        flex-wrap: wrap;
         gap:1rem;
+        justify-content: center;
+        align-items:center;
     
     }
     li{
         transform: scale(0.9);
         transition: all ease-in 0.4s;
         opacity: 0.8;
+    
         &:hover{
             transform: scale(1);
             opacity: 1;
@@ -62,7 +66,7 @@
     font-size: 1.3rem;
     font-weight: bold;
     background-color: $colorDarkBlue;
-   
+align-self: center;
     box-shadow: 5px 3px 5px rgba(0,0,0,0.3);
     padding: 0.5rem 0.8rem;
     border: 1px solid $colorWhite ;
@@ -73,10 +77,22 @@
     text-decoration: none;
     font-size: 1.3rem;
     font-weight: bold;
+ 
     background-color: $colorWhite;
 
     box-shadow: 5px 3px 5px rgba(0,0,0,0.3);
     padding: 0.5rem 0.8rem;
     border: 1px solid $colorWhite ;
     border-radius: 7px;
+}
+.title{
+    color:$colorWhite;
+}
+@media screen and (max-width:700px) {
+    .link{
+        font-size: 1rem;
+    }
+    .active{
+        font-size: 1rem;
+    }
 }

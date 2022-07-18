@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useAuthContext } from '../../context/authContext';
+import PasswordModule from '../passwordReset/PasswordModule';
 import styles from "./LoginForm.module.scss";
 const LoginForm = () => {
   const { toggleSign, setUserName, login ,googleSignIn} = useAuthContext();
@@ -81,6 +82,11 @@ const LoginForm = () => {
           <input type="password" id='passwordInput' ref={passwordInput} />
           <button> {toggleSign ? "REGISTER" : "LOGIN"} </button>
         </form>
+       {!toggleSign && <button 
+       className={styles["password-reset-btn"]} 
+       data-bs-toggle="modal"
+        data-bs-target="#edit-modal"
+       >Forgot your password</button>}
         <button
           className={styles["login-with-google-btn"]}
           onClick={googleSignIn}
@@ -89,7 +95,7 @@ const LoginForm = () => {
 
         </button>
       </section>
-
+<PasswordModule/>
     </Fragment>
   )
 }

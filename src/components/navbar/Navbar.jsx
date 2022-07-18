@@ -33,7 +33,7 @@ const Navbar = () => {
                        onClick={()=>setToggleSign(false)}
                             >Login</NavLink> 
                             
-                    :<p>Welcome <strong>{user?user.displayName:userName} </strong> </p> }
+                    :<p className={styles.title} >Welcome <strong>{user?user.displayName:userName} </strong> </p> }
                       
                     </li>
                     <li>

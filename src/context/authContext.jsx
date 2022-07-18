@@ -30,6 +30,7 @@ const url=`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
 console.log(API_KEY)
 
 const AuthContextProvider=(props)=>{
+    const initialToken=localStorage.getItem("token");
     const [movieData,setMovieData]=useState("");
     const [query, setQuery]=useState("");
     const [toggleSign,setToggleSign]=useState(false);
@@ -75,12 +76,14 @@ useEffect(()=>{
 
 
 const loginHandler=(tokenId)=>{
-setToken(tokenId)
+setToken(tokenId);
+localStorage.setItem("token",token)
 }
 
 const logoutHandler=()=>{
     setToken(null);
     googleSingOut();
+    localStorage.removeItem("name");
 
 }
 
