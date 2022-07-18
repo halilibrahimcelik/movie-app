@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import styles from "./Details.module.scss";
 import {useParams,useNavigate} from "react-router-dom";
+import spinner from "../../assests/gif hour glass.gif";
 
 import Container from '../../UI/Container';
 import {FaImdb} from "react-icons/fa";
@@ -8,7 +9,7 @@ const Details = () => {
   const API_KEY=process.env.REACT_APP_APP_KEY;
   const {id}=useParams();
   const navigate=useNavigate()
-  console.log(id);
+
   const [movieData,setMovieData]=useState("");
   const [trailer,setTrailer]=useState("");
 
@@ -20,7 +21,7 @@ useEffect(()=>{
       throw new Error("Movie is not fetched");
     }
     const data= await response.json();
-    console.log(data);
+
     setMovieData(data)
   }
 
@@ -31,7 +32,7 @@ useEffect(()=>{
       throw new Error("Movie is not fetched");
     }
     const data= await response.json();
-    console.log(data);
+ 
     setTrailer(data)
   }
 fetchMovie()
@@ -39,10 +40,9 @@ fetData();
 },[id,API_KEY])
 const {original_title,overview,release_date, spoken_languages,genres,imdb_id,vote_average,backdrop_path}=movieData;
 const {results}=trailer
-console.log(results)
-console.log( results&& results[0]?.key)
+
 if( !results){
-  return <p>No Data Found :(</p>
+  return <img  className= {styles.spinner} src={spinner} alt="spinner.." />
 }else{
   return (
     <Fragment>

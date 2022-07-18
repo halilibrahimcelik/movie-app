@@ -1,7 +1,7 @@
 import React, { Fragment, useRef } from 'react'
 import { useAuthContext } from '../../context/authContext';
 import  styles from "./SearchForm.module.scss";
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 const SearchForm = () => {
    const {setQuery,isLoggedIn}=useAuthContext()
 const queryInput=useRef("");
@@ -10,7 +10,7 @@ const handleSubmit=(e)=>{
   if(isLoggedIn){
     e.preventDefault();
     const enteredQuery=queryInput.current.value;
-  console.log(enteredQuery)
+
   setQuery(enteredQuery);
 
   }else{

@@ -10,9 +10,7 @@ const Card = ({title,img,overview,rate,id}) => {
   const{isLoggedIn} =useAuthContext()
   const navigate=useNavigate();
 
-// if(!isLoggedIn){
-// return alert("please Login first")
-// }
+
   return (
     <Fragment>
    <li className={styles.card} 

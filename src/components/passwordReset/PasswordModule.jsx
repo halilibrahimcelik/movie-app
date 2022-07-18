@@ -6,7 +6,7 @@ const PasswordModule = () => {
    const APP_KEY=process.env.REACT_APP_FIREBASE_WEB_KEY;
 
    const [email,setEmail]=useState();
-   console.log([email])
+
     const handleSubmit=(e)=>{
         const enteredEmail=emailInputRef.current.value;
         e.preventDefault();

@@ -8,5 +8,26 @@
     min-height: 81.8vh;
     width: 100%;
     background-color: $colorBg;
+    align-items: center;
 
+
+}
+.spinner{
+    border-radius: 50%;
+  align-self: center;
+  justify-self: center;
+}
+.button{
+    background-color: $colorDarkRed;
+    padding:0.3rem 0.5rem;
+    border-radius: 5px;
+border: none;
+text-align: left;
+margin-bottom: 1rem;
+
+color:$colorWhite;
+cursor: pointer;
+&:hover{
+color:black;
+}
 }

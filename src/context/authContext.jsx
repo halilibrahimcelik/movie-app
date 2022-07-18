@@ -27,7 +27,7 @@ export  const  useAuthContext=()=>{
 
 const API_KEY=process.env.REACT_APP_APP_KEY;
 const url=`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
-console.log(API_KEY)
+
 
 const AuthContextProvider=(props)=>{
     const initialToken=localStorage.getItem("token");
@@ -37,7 +37,7 @@ const AuthContextProvider=(props)=>{
     const [userName,setUserName]=useState("");
     const [token,setToken]=useState(null);
     const [user,setUser]=useState({});//?for Google Auth
-    const [module,setModule]=useState(false)
+
  
     const userIsLoggedIn=!!token || !!user?.accessToken;
 const fetchData=async()=>{
@@ -48,7 +48,8 @@ const fetchData=async()=>{
         throw new Error("Something went wrong")
     }else{
         const data= await response.json();
-        setMovieData(data)
+        setMovieData(data);
+       
     }
 
  } catch (error) {
@@ -68,7 +69,7 @@ useEffect(()=>{
     //?this will mount whenever we sign in with google
     const unSubcribe=onAuthStateChanged(auth, (currentUser)=>{
         setUser(currentUser);
-        console.log("user", currentUser)
+        // console.log("user", currentUser)
     });
     return ()=>{
         unSubcribe()
@@ -100,7 +101,7 @@ const searchMovie=useCallback(async()=>{
         setMovieData(data)
     }
     } catch (error) {
-        console.log(error)
+        // console.log(error)
         
     }
 },[query])
@@ -120,8 +121,8 @@ isLoggedIn:userIsLoggedIn,
 googleSignIn:googleSignIn,
 googleSingOut:googleSingOut,
 user:user,
-setModule:setModule,
-module:module
+fetchData:fetchData
+
 }
 
     return (<AuthContext.Provider value={contextValue}>

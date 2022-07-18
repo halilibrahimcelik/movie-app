@@ -6,15 +6,17 @@ import {Link,NavLink} from "react-router-dom";
 import { useAuthContext } from '../../context/authContext';
 
 const Navbar = () => {
-    const {userName,isLoggedIn,user,setToggleSign,logout}=useAuthContext();
-    console.log(isLoggedIn=== true)
+    const {userName,isLoggedIn,user,setToggleSign,logout,fetchData,movieData}=useAuthContext();
+
+    const {results}=movieData;
+
   
   return (
     <section className={styles.navBar} >
         <Container>
             <nav>
 
-                <Link to="/"  className={styles.logo}>
+                <Link to="/"  className={styles.logo} onClick={()=>results?.length===0? fetchData():null} >
                 
                     <BiMoviePlay className={styles.icon} />
                     <h1> MOVIE STORE </h1>

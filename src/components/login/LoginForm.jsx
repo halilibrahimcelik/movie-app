@@ -5,9 +5,8 @@ import styles from "./LoginForm.module.scss";
 import { ToastContainer, toast } from 'react-toastify';
 import{useNavigate,Navigate} from "react-router-dom";
 const LoginForm = () => {
-  const { toggleSign, setUserName, login ,googleSignIn,isLoggedIn,user,setModule,module} = useAuthContext();
-const navigate=useNavigate()
-  // const nameInput=useRef();
+  const { toggleSign, setUserName, login ,googleSignIn,isLoggedIn,user} = useAuthContext();
+
   const [initialName, setName] = useState("");
   const emailInput = useRef("");
   const passwordInput = useRef("");
@@ -20,9 +19,6 @@ const navigate=useNavigate()
     const enteredEmail = emailInput.current.value;
     e.preventDefault();
 
-
-    // emailInput.current.value="";
-    // passwordInput.current.value="";
     const enteredPassword = passwordInput.current.value;
     console.log(enteredEmail, enteredName, enteredPassword);
     let url;
@@ -51,7 +47,7 @@ const navigate=useNavigate()
         //?we got and eror
         return response.json().then(data => {
           //?show your error modal
-          console.log(data);
+     
           let errorMessage = "Authentication Failed";
           if (data && data.error && data.error.message) {
             errorMessage = data.error.message;
@@ -82,7 +78,7 @@ const navigate=useNavigate()
         draggable: true,
         progress: undefined,
         });
-      console.log(data)
+ 
       setUserName(data.displayName);
       login(data.idToken)
 
