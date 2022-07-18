@@ -6,6 +6,7 @@ import Details from "../pages/details/Details";
 import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import Navbar from "../components/navbar/Navbar";
+import ProtectedRoutes from "./ProtectedRoutes";
 
 const AppRouter = () => {
   return (
@@ -16,7 +17,9 @@ const AppRouter = () => {
 
     <Route  path="login" element={<Login/>} />
     <Route  path="register" element={<Register/>} />
-    <Route  path="/details/:id" element={<Details/>} />
+    <Route path="/details/:id"  element={<ProtectedRoutes/>}>
+      <Route path=""  element={<Details/>} />
+    </Route>
 
 
     </Routes>

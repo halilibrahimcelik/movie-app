@@ -2,14 +2,20 @@ import React, { Fragment, useRef } from 'react'
 import { useAuthContext } from '../../context/authContext';
 import  styles from "./SearchForm.module.scss";
 const SearchForm = () => {
-   const {setQuery}=useAuthContext()
+   const {setQuery,isLoggedIn}=useAuthContext()
 const queryInput=useRef("");
 
 const handleSubmit=(e)=>{
-  e.preventDefault();
-  const enteredQuery=queryInput.current.value;
-console.log(enteredQuery)
-setQuery(enteredQuery);
+  if(isLoggedIn){
+    e.preventDefault();
+    const enteredQuery=queryInput.current.value;
+  console.log(enteredQuery)
+  setQuery(enteredQuery);
+
+  }else{
+    e.preventDefault();
+    alert("plase login first")
+  }
 }
 
   return (

@@ -40,7 +40,10 @@ fetData();
 const {original_title,overview,release_date, spoken_languages,genres,imdb_id,vote_average,backdrop_path}=movieData;
 const {results}=trailer
 console.log(results)
-console.log( results&& results[0].key)
+console.log( results&& results[0]?.key)
+if( !results){
+  return <p>No Data Found :(</p>
+}else{
   return (
     <Fragment>
       <section className={styles["details-container"]}>
@@ -48,16 +51,16 @@ console.log( results&& results[0].key)
 
         <main className={styles.wrapper} >
           <h1 className={styles.title} >{original_title} </h1>
-                <div className={styles["video-responsive"]}>
+              { results[0]?.key && <div className={styles["video-responsive"]}>
               <iframe
              
-                src={`https://www.youtube.com/embed/${results&& results[0].key}`}
+                src={`https://www.youtube.com/embed/${results&& results[0]?.key}`}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
                 title="Embedded youtube"
               />
-            </div>
+            </div>}
             <div className={styles["details-info"]}>
               <article>
                 <h5>Overview</h5>
@@ -91,6 +94,8 @@ console.log( results&& results[0].key)
 
     </Fragment>
   )
+
+}
 }
 
 export default Details
