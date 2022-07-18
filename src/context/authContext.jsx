@@ -1,6 +1,7 @@
 
 import {createContext,useContext, useEffect, useState,useCallback} from "react";
-
+import { GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged  } from "firebase/auth";
+import { auth } from "../Firebase";
 export const  AuthContext=createContext({
   movieData:"",
   setQuery:()=>{},
@@ -11,7 +12,10 @@ export const  AuthContext=createContext({
   token:"",
   login:(token)=>{},
   logout:()=>{},
-  isLoggedIn:false
+  isLoggedIn:false,
+  googleSignIn:()=>{},
+  googleSingOut:()=>{},
+  user:""
 
 });
 
@@ -19,7 +23,7 @@ export const  AuthContext=createContext({
 //?Defining our custom Hook
 export  const  useAuthContext=()=>{
     return useContext(AuthContext)
-}
+};
 
 const API_KEY=process.env.REACT_APP_APP_KEY;
 const url=`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}`;
@@ -31,8 +35,9 @@ const AuthContextProvider=(props)=>{
     const [toggleSign,setToggleSign]=useState(false);
     const [userName,setUserName]=useState("");
     const [token,setToken]=useState(null);
+    const [user,setUser]=useState({});//?for Google Auth
  
-    const userIsLoggedIn=!!token
+    const userIsLoggedIn=!!token || !!user?.accessToken;
 const fetchData=async()=>{
  try {
   
@@ -49,12 +54,34 @@ const fetchData=async()=>{
  }
 }
 
+const googleSignIn=()=>{
+const provider= new GoogleAuthProvider();
+signInWithPopup(auth,provider);
+
+}
+const googleSingOut=()=>{
+    signOut(auth);
+}
+useEffect(()=>{
+    //?this will mount whenever we sign in with google
+    const unSubcribe=onAuthStateChanged(auth, (currentUser)=>{
+        setUser(currentUser);
+        console.log("user", currentUser)
+    });
+    return ()=>{
+        unSubcribe()
+    }
+},[])
+
+
 const loginHandler=(tokenId)=>{
 setToken(tokenId)
 }
 
 const logoutHandler=()=>{
     setToken(null);
+    googleSingOut();
+
 }
 
 useEffect(()=>{fetchData()},[]);
@@ -85,7 +112,10 @@ setUserName:setUserName,
 token:token,
 login:loginHandler,
 logout:logoutHandler,
-isLoggedIn:userIsLoggedIn
+isLoggedIn:userIsLoggedIn,
+googleSignIn:googleSignIn,
+googleSingOut:googleSingOut,
+user:user
 }
 
     return (<AuthContext.Provider value={contextValue}>

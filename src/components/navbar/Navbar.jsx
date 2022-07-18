@@ -6,8 +6,9 @@ import {Link,NavLink} from "react-router-dom";
 import { useAuthContext } from '../../context/authContext';
 
 const Navbar = () => {
-    const {toggleSign,userName,isLoggedIn}=useAuthContext()
-    const {setToggleSign} = useAuthContext()
+    const {userName,isLoggedIn,user,setToggleSign,logout}=useAuthContext();
+    console.log(isLoggedIn=== true)
+  
   return (
     <section className={styles.navBar} >
         <Container>
@@ -21,26 +22,30 @@ const Navbar = () => {
                 </Link>
                 <ul>
                     <li>
-                    {isLoggedIn&& <p> {userName} </p>}
+              
                     </li>
                     <li>
                      
-                            <NavLink 
+                       {!isLoggedIn ?     <NavLink 
                             to="/login"
                          className={({ isActive }) =>
                        isActive ?` ${styles.active} `: `${styles.link}`}
                        onClick={()=>setToggleSign(false)}
-                            >Login</NavLink>
+                            >Login</NavLink> 
+                            
+                    :<p>Welcome <strong>{user?user.displayName:userName} </strong> </p> }
                       
                     </li>
                     <li>
                
-                        <NavLink to="/register"  
+                   { !isLoggedIn?   <NavLink to="/register"  
                          className={({ isActive }) =>
                          isActive ?` ${styles.active} `: `${styles.link}`} 
                          onClick={()=>setToggleSign(true)}
                          >
                                                     Register</NavLink>
+                            :<button  onClick={logout} className={styles.link} >Logout</button>                        
+                                                }
                  
                     </li>
                 
