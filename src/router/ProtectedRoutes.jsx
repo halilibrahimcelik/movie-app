@@ -5,7 +5,7 @@ import {Outlet,Navigate} from "react-router-dom";
 const ProtectedRoutes = () => {
     const {isLoggedIn,user} =useAuthContext()
   return (
-    user?.displayName ||isLoggedIn ?<Outlet/>: <Navigate to="/" /> &&alert("plese")
+    user?.displayName ||isLoggedIn ?<Outlet/>: <Navigate to="/" /> 
   )
 }
 

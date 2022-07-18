@@ -37,6 +37,7 @@ const AuthContextProvider=(props)=>{
     const [userName,setUserName]=useState("");
     const [token,setToken]=useState(null);
     const [user,setUser]=useState({});//?for Google Auth
+    const [module,setModule]=useState(false)
  
     const userIsLoggedIn=!!token || !!user?.accessToken;
 const fetchData=async()=>{
@@ -118,7 +119,9 @@ logout:logoutHandler,
 isLoggedIn:userIsLoggedIn,
 googleSignIn:googleSignIn,
 googleSingOut:googleSingOut,
-user:user
+user:user,
+setModule:setModule,
+module:module
 }
 
     return (<AuthContext.Provider value={contextValue}>

@@ -1,6 +1,7 @@
 import React, { Fragment, useRef } from 'react'
 import { useAuthContext } from '../../context/authContext';
 import  styles from "./SearchForm.module.scss";
+import { ToastContainer, toast } from 'react-toastify';
 const SearchForm = () => {
    const {setQuery,isLoggedIn}=useAuthContext()
 const queryInput=useRef("");
@@ -14,7 +15,16 @@ const handleSubmit=(e)=>{
 
   }else{
     e.preventDefault();
-    alert("plase login first")
+    toast.warning("You first need to login!", {
+      position: "top-left",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+ 
+      });
   }
 }
 

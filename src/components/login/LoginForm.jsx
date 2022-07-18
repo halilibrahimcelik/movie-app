@@ -2,13 +2,18 @@ import React, { Fragment, useEffect, useRef, useState } from 'react'
 import { useAuthContext } from '../../context/authContext';
 import PasswordModule from '../passwordReset/PasswordModule';
 import styles from "./LoginForm.module.scss";
+import { ToastContainer, toast } from 'react-toastify';
+import{useNavigate,Navigate} from "react-router-dom";
 const LoginForm = () => {
-  const { toggleSign, setUserName, login ,googleSignIn} = useAuthContext();
+  const { toggleSign, setUserName, login ,googleSignIn,isLoggedIn,user,setModule,module} = useAuthContext();
+const navigate=useNavigate()
   // const nameInput=useRef();
   const [initialName, setName] = useState("");
-  const emailInput = useRef();
-  const passwordInput = useRef();
+  const emailInput = useRef("");
+  const passwordInput = useRef("");
   const FIREBASE_WEB_KEY = process.env.REACT_APP_FIREBASE_WEB_KEY;
+
+
 
   const handleSubmit = (e) => {
     const enteredName = toggleSign ? initialName : "";
@@ -16,7 +21,8 @@ const LoginForm = () => {
     e.preventDefault();
 
 
-
+    // emailInput.current.value="";
+    // passwordInput.current.value="";
     const enteredPassword = passwordInput.current.value;
     console.log(enteredEmail, enteredName, enteredPassword);
     let url;
@@ -50,13 +56,32 @@ const LoginForm = () => {
           if (data && data.error && data.error.message) {
             errorMessage = data.error.message;
           }
+          toast.error(`${errorMessage}`, {
+            position: "top-left",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            });
           throw new Error(errorMessage)
         })
       } else {
         return response.json()
       }
     }).then(data => {
-      //!we get successfully our data
+      //!we get successfully our data;
+   
+      toast.success("You have succesfully logged in!", {
+        position: "top-left",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
       console.log(data)
       setUserName(data.displayName);
       login(data.idToken)
@@ -65,7 +90,12 @@ const LoginForm = () => {
     })
   }
 
+if(user?.displayName ||isLoggedIn){
 
+  return <Navigate to="/" />
+
+   
+}
   return (
     <Fragment>
       <section className={styles.wrapper} >
@@ -80,7 +110,7 @@ const LoginForm = () => {
           <input type="email" id="emailInput" ref={emailInput} />
           <label htmlFor="passwordInput">Password</label>
           <input type="password" id='passwordInput' ref={passwordInput} />
-          <button> {toggleSign ? "REGISTER" : "LOGIN"} </button>
+          <button   > {toggleSign ? "REGISTER" : "LOGIN"} </button>
         </form>
        {!toggleSign && <button 
        className={styles["password-reset-btn"]} 
@@ -96,6 +126,7 @@ const LoginForm = () => {
         </button>
       </section>
 <PasswordModule/>
+
     </Fragment>
   )
 }

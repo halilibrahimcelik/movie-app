@@ -1,4 +1,5 @@
-import React, { Fragment, useRef, useState } from 'react'
+import React, { Fragment, useRef, useState } from 'react';
+import {toast,ToastContainer} from "react-toastify"
 
 const PasswordModule = () => {
    const emailInputRef=useRef();
@@ -33,7 +34,15 @@ const PasswordModule = () => {
         }
         }).then((data)=>{
             console.log(data);
-            alert("password send to your email")
+            toast.success(`Password send to your mail adress!`, {
+                position: "top-left",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                });
         })
 
     }
@@ -69,6 +78,17 @@ const PasswordModule = () => {
           </div>
         </div>
       </div>
+      <ToastContainer
+position="top-left"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
 
     </Fragment>
   )
