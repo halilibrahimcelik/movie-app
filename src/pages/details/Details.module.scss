@@ -3,8 +3,9 @@
 
 .details-container{
 
-    background-color: $colorBg;
+    background-color:#363432;
     min-height: calc(100vh - 6rem);
+    color:$colorWhite;
  
     
 }
@@ -26,8 +27,80 @@ height: 300px;
 
 }
 .title{
-    color:rgb(53, 44, 44);
+    color:rgb(187, 172, 172);
     font-size: 1.4rem;
     text-align: center;
    
+}
+
+.details-info{
+    display: flex;
+  align-items: center;
+  gap: 2rem;
+ 
+    /*!Tüm elemanların buyumesine izin ver*/
+    flex-grow: 1;
+    /* Tüm div'lerin eşit miktarda alan tutabilmesine izin ver.*/
+    flex-basis: 0;
+
+
+  article{
+ display: flex;
+ flex-direction: column;
+ gap: 1rem;
+ 
+
+ p{
+    margin:0;
+    
+ }
+  }
+}
+
+.icon{
+    font-size: 3rem;
+    color:$colorCoral;
+}
+.genres{
+    display: flex;
+    flex-wrap: wrap;
+    gap:0.4rem
+}
+.genre{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding:0.1rem 0.2rem;
+ 
+}
+
+.details-poster{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+
+    button{
+        background-color: $colorDarkRed;
+        padding:0.3rem 0.5rem;
+        border-radius: 5px;
+border: none;
+text-align: left;
+margin-bottom: 1rem;
+
+color:$colorWhite;
+cursor: pointer;
+&:hover{
+    color:black;
+}
+    }
+}
+
+@media screen and (max-width:700px){
+    .details-info{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
 }

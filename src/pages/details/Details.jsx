@@ -1,15 +1,16 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import styles from "./Details.module.scss";
-import {useParams} from "react-router-dom";
-import { async } from '@firebase/util';
+import {useParams,useNavigate} from "react-router-dom";
+
 import Container from '../../UI/Container';
 import {FaImdb} from "react-icons/fa";
 const Details = () => {
   const API_KEY=process.env.REACT_APP_APP_KEY;
   const {id}=useParams();
+  const navigate=useNavigate()
   console.log(id);
   const [movieData,setMovieData]=useState("");
-  const [trailer,setTrailer]=useState("")
+  const [trailer,setTrailer]=useState("");
 
 
 useEffect(()=>{
@@ -57,26 +58,27 @@ console.log( results&& results[0].key)
                 title="Embedded youtube"
               />
             </div>
-            <div className=''>
+            <div className={styles["details-info"]}>
               <article>
                 <h5>Overview</h5>
                 <p>{overview}</p>
-                 <p>Release Date <span>{release_date} </span> </p> 
-                 <p>Spoken Languages:  { spoken_languages.map((lang,index)=>{
+                 <p><strong>Release Date: </strong> <span>{release_date} </span> </p> 
+                 <p><strong>Spoken Languages: </strong> { spoken_languages?.map((lang,index)=>{
                   const {english_name}=lang
                   return <span key={index}>{english_name} </span>
                  })} </p> 
-                 <p>Genres:  { genres.map((genre,index)=>{
+                 <p className={styles.genres} ><strong>Genres:</strong>  { genres?.map((genre,index)=>{
                   const {name}=genre
-                  return <span key={index}>{name} </span>
+                  return <span className={styles.genre} key={index}>{name} </span>
                  })} </p> 
                  <p>   <a href={`https://www.imdb.com/title/${imdb_id}`} target="_blank" rel="noopener noreferrer" >  <FaImdb className={styles.icon} /></a>  <span>  {vote_average} </span>
                   
              </p> 
              
               </article>
-              <div>
+              <div  className={styles["details-poster"]}>
               <img src={`https://image.tmdb.org/t/p/w300${backdrop_path}`} alt="" />
+              <button onClick={()=> navigate("/")}>Back To Home </button>
               </div>
             </div>
 
