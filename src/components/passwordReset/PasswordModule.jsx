@@ -1,15 +1,41 @@
 import React, { Fragment, useRef, useState } from 'react'
 
 const PasswordModule = () => {
-   // const emaillInputRef=useRef();
-   const APP_KEY=process.env.REACT_APP_APP_KEY;
+   const emailInputRef=useRef();
+   const APP_KEY=process.env.REACT_APP_FIREBASE_WEB_KEY;
 
-   const [email,setEmail]=useState()
+   const [email,setEmail]=useState();
+   console.log([email])
     const handleSubmit=(e)=>{
-        // const enteredEmail=emailInputRef.current.value;
+        const enteredEmail=emailInputRef.current.value;
         e.preventDefault();
 
-        fetch(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${APP_KEY}`)
+        fetch(`https://identitytoolkit.googleapis.com/v1/accounts:sendOobCode?key=${APP_KEY}`,{
+
+        method:"POST",
+        body:JSON.stringify({
+            requestType:"PASSWORD_RESET",
+            email:enteredEmail
+        }),
+        headers: {
+            "Content-type": "application/json",
+          },
+        }).then(response=>{
+        if(!response.ok){
+            //?we got an error
+            return response.json().then(data=>{
+                throw new  Error("Invalid Email")
+            })
+
+        }else{
+            //!we successfully send the request
+            return response.json();
+        }
+        }).then((data)=>{
+            console.log(data);
+            alert("password send to your email")
+        })
+
     }
 
     return (
@@ -25,7 +51,7 @@ const PasswordModule = () => {
             <form onSubmit={handleSubmit}>
 
     <label htmlFor="exampleInputEmail1" className="form-label">Email</label>
-    <input type="email" className="form-control"  onChange={e=>{setEmail(e.target.value)}} id="exampleInputEmail1" />
+    <input type="email" className="form-control"   ref={emailInputRef} id="exampleInputEmail1" />
     
 
 

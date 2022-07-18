@@ -1,0 +1,33 @@
+@import "../../sass/variable";
+
+
+.details-container{
+
+    background-color: $colorBg;
+    min-height: calc(100vh - 6rem);
+ 
+    
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+padding: 1rem 4rem;
+gap: 1rem;
+    
+    
+}
+.video-responsive{
+
+   iframe{
+width: 100%;
+height: 300px;
+   }
+
+}
+.title{
+    color:rgb(53, 44, 44);
+    font-size: 1.4rem;
+    text-align: center;
+   
+}

@@ -10,7 +10,15 @@ const MovieCard = (props) => {
          {MovieArray?.map((movie)=>{
           const {title,poster_path, id, overview,vote_average}=movie
       
- return <Card key={id} title={title} img={poster_path} overview={overview} rate={vote_average}  />
+ return <Card
+  key={id}
+   title={title} 
+   img={poster_path}
+    overview={overview} 
+    rate={vote_average} 
+    id={id}
+  
+     />
          }) }
         </ul >
     </Fragment>
