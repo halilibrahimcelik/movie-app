@@ -27,7 +27,7 @@ useEffect(()=>{
 
   
   const fetchMovie=async()=>{
-    const response= await fetch(`http://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`);
+    const response= await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${API_KEY}`);
     if(!response.ok){
       throw new Error("Movie is not fetched");
     }
