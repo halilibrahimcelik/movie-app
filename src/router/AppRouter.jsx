@@ -7,6 +7,7 @@ import Register from "../pages/register/Register";
 import Login from "../pages/login/Login";
 import Navbar from "../components/navbar/Navbar";
 import ProtectedRoutes from "./ProtectedRoutes";
+import Footer from "../components/footer/Footer";
 
 const AppRouter = () => {
   return (
@@ -23,6 +24,7 @@ const AppRouter = () => {
 
 
     </Routes>
+    <Footer/>
     </BrowserRouter>
   )
 }

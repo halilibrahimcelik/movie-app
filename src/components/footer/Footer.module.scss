@@ -1,0 +1,70 @@
+@import "../../sass/variable";
+footer{
+    background-color:$colorBg ;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    gap:1rem;
+    padding:2rem;
+    h3{
+        color:$colorWhite;
+        font-size: 1rem;
+        align-self: center;
+        padding: 0;
+        margin: 0;
+       
+    }
+}
+
+.icons{
+    display: flex;
+    gap:0.2rem;
+    .icon{
+        color:$colorWhite;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+}
+.top-to-btm{
+    position: relative;
+  }
+  .icon-position{
+    position: fixed;
+    bottom: 40px;
+    right:10px;
+    z-index: 20;
+  }
+  .icon-style{
+    background-color: #551b1b;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    color: #fff;
+    cursor: pointer;
+    animation: movebtn 3s ease-in-out infinite;
+    transition: all .5s ease-in-out;
+  }
+  .icon-style:hover{
+    animation: none;
+    background: #fff;
+    color: #551b20;
+    border: 2px solid #390e15;
+  }
+  @keyframes movebtn {
+    0%{
+      transform: translateY(0px);
+    }
+    25%{
+      transform: translateY(20px);
+    }
+    50%{
+      transform: translateY(0px);
+    }
+    75%{
+      transform: translateY(-20px);
+    }
+    100%{
+      transform: translateY(0px);
+    }
+  }
