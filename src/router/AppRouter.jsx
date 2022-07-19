@@ -21,7 +21,8 @@ const AppRouter = () => {
     <Route path="/details/:id"  element={<ProtectedRoutes/>}>
       <Route path=""  element={<Details/>} />
     </Route>
-
+    <Route path="*"  element={<Home/>} />
+ 
 
     </Routes>
     <Footer/>
