@@ -10,8 +10,47 @@
     background-color: $colorBg;
     align-items: center;
 
+   
+
 
 }
+
+.imageDiv{
+    position: relative;
+    overflow: hidden;
+    width: 400px;
+    height: 300px;
+
+    img{
+      position: absolute;
+      width: 400px;
+        top:1rem;
+      left:-1rem ;
+
+     
+       
+    }
+}
+
+@media screen and (max-width:700px) {
+   
+    
+    .imageDiv{
+        width: 250px;
+        height: 300px;
+        img{
+     
+          width: 300px;
+          top:1rem;
+           left: -1rem;
+    
+         
+           
+        }
+    }
+    
+}
+
 .spinner{
     border-radius: 50%;
   align-self: center;
