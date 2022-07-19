@@ -43,7 +43,7 @@ const {original_title,overview,release_date, spoken_languages,genres,imdb_id,vot
 const {results}=trailer
 
 if(!results){
-  return<section className={styles.wrapper} > <img  className= {styles.spinner} src={spinner} alt="spinner.." /></section>
+  return<section className={styles.cover} > <img  className= {styles.spinner} src={spinner} alt="spinner.." /></section>
 }else{
   return (
     <Fragment>
@@ -84,7 +84,7 @@ if(!results){
 
            
               <img src={ backdrop_path? `https://image.tmdb.org/t/p/w300${backdrop_path}` : `${logo}` } alt="" />
-              <button onClick={()=> navigate("/")}>Back To Home </button>
+              <button onClick={()=> navigate(-1)}>Back To Home </button>
               </div>
             </div>
 
