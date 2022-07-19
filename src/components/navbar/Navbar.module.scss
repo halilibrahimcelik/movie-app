@@ -87,8 +87,13 @@ align-self: center;
 }
 .title{
     color:$colorWhite;
+    padding-top: 1rem;
+ 
 }
 @media screen and (max-width:700px) {
+    nav{
+        flex-wrap: wrap;
+    }
     .link{
         font-size: 1rem;
     }

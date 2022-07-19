@@ -23,9 +23,7 @@ const Navbar = () => {
                
                 </Link>
                 <ul>
-                    <li>
               
-                    </li>
                     <li>
                      
                        {!isLoggedIn ?     <NavLink 
