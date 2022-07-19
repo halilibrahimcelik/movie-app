@@ -117,7 +117,7 @@ if(user?.displayName ||isLoggedIn){
           className={styles["login-with-google-btn"]}
           onClick={googleSignIn}
         >
-          {toggleSign ? "Register with Google" : "Sing with Google"}
+          {toggleSign ? "Register with Google" : "Sign with Google"}
 
         </button>
       </section>

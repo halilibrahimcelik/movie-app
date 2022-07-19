@@ -5,6 +5,7 @@ import spinner from "../../assests/gif hour glass.gif";
 
 import Container from '../../UI/Container';
 import {FaImdb} from "react-icons/fa";
+import logo from "../../assests/200w.gif"
 const Details = () => {
   const API_KEY=process.env.REACT_APP_APP_KEY;
   const {id}=useParams();
@@ -41,8 +42,8 @@ fetData();
 const {original_title,overview,release_date, spoken_languages,genres,imdb_id,vote_average,backdrop_path}=movieData;
 const {results}=trailer
 
-if( !results){
-  return <img  className= {styles.spinner} src={spinner} alt="spinner.." />
+if(!results){
+  return<section className={styles.wrapper} > <img  className= {styles.spinner} src={spinner} alt="spinner.." /></section>
 }else{
   return (
     <Fragment>
@@ -80,7 +81,9 @@ if( !results){
              
               </article>
               <div  className={styles["details-poster"]}>
-              <img src={`https://image.tmdb.org/t/p/w300${backdrop_path}`} alt="" />
+
+           
+              <img src={ backdrop_path? `https://image.tmdb.org/t/p/w300${backdrop_path}` : `${logo}` } alt="" />
               <button onClick={()=> navigate("/")}>Back To Home </button>
               </div>
             </div>
