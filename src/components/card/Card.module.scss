@@ -9,6 +9,7 @@
     border-radius: 7px;
     overflow: hidden;
     cursor: pointer;
+    transition: all 0.4s ease-in;
     &:hover .overview{
         transform:  translateX(0%);
     }
