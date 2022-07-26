@@ -8,7 +8,7 @@
 
 --I embreaced technique of wrting SPA principle. 
 
-React-router library had been used in this project for navigating to different pages in the app.
-I used Google Firebase as the authentication server. 
-I practiced my knowledge regarding using React custom hooks and and protected routes in this project. 
-Importantly, I also added authorization option with Google accounts as well. 
+--React-router library had been used in this project for navigating to different pages in the app.
+--I used Google Firebase as the authentication server. 
+--I practiced my knowledge regarding using React custom hooks and and protected routes in this project. 
+--I also added authorization option with Google accounts as well. 
