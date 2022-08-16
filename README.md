@@ -6,6 +6,8 @@
 
 --In this project I structured my application  by using React.
 
+--I used  SCSS  for styling of components.
+
 --I embreaced technique of wrting SPA principle. 
 
 --React-router library had been used in this project for navigating to different pages in the app.
