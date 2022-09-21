@@ -16,4 +16,4 @@
 
 --I practiced my knowledge regarding using React custom hooks and and protected routes in this project. 
 
---I also added authorization option with Google accounts as well. 
+--I also added authorization option with Google accounts as well. In addition I also add forgot the password link so that the user can get reset email if they forget their password
